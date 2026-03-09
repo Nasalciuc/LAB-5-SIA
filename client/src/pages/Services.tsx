@@ -214,7 +214,7 @@ export default function Services() {
             background: '#1E293B',
           }}>
             <img
-              src="https://images.unsplash.com/photo-1563986768609-322da13575f2?w=1080&q=80&fit=crop"
+              src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1080&q=80&fit=crop"
               alt="Securitate"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />

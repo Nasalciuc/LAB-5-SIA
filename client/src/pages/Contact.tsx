@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Send, Mail, Phone, MapPin, Map, ChevronDown, ChevronRight, Hexagon } from 'lucide-react'
+import { Send, Mail, Phone, MapPin, Clock4, Map, ExternalLink, ChevronDown, Cpu, Linkedin, Facebook, Github, Twitter } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', company: '', subject: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', service: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle')
   const [statusMsg, setStatusMsg] = useState('')
 
@@ -24,7 +24,7 @@ export default function Contact() {
       if (res.ok) {
         setStatus('success')
         setStatusMsg(data.message)
-        setForm({ name: '', email: '', company: '', subject: '', message: '' })
+        setForm({ name: '', email: '', phone: '', company: '', service: '', message: '' })
       } else {
         setStatus('error')
         setStatusMsg(data.error)
@@ -37,118 +37,180 @@ export default function Contact() {
 
   const inputStyle: React.CSSProperties = {
     width: '100%',
-    height: 48,
-    background: '#0A0F1C',
-    border: '1px solid var(--pg-border)',
-    borderRadius: 10,
-    padding: '0 16px',
+    background: '#1A2035',
+    border: '1px solid #333333',
+    borderRadius: 8,
+    padding: '14px 16px',
     color: 'var(--pg-text)',
     fontFamily: 'var(--pg-body)',
-    fontSize: 14,
+    fontSize: 16,
     outline: 'none',
   }
 
   const labelStyle: React.CSSProperties = {
     fontFamily: 'var(--pg-body)',
     fontSize: 14,
-    fontWeight: 500,
-    color: 'var(--pg-text)',
+    fontWeight: 700,
+    color: '#A0AEC0',
   }
 
   return (
     <div>
-      {/* Hero */}
+      {/* Hero Section */}
       <section style={{
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        gap: 20,
-        padding: '80px 120px 48px',
+        background: '#0A0F1C',
       }}>
-        <span style={{ fontFamily: 'var(--pg-body)', fontSize: 13, fontWeight: 600, letterSpacing: 2, color: 'var(--pg-accent)' }}>CONTACT</span>
-        <h1 style={{ fontFamily: 'var(--pg-heading)', fontSize: 52, fontWeight: 700, color: 'var(--pg-text)', textAlign: 'center' }}>
-          Hai să vorbim
-        </h1>
-        <p style={{ fontFamily: 'var(--pg-body)', fontSize: 18, lineHeight: 1.6, color: 'var(--pg-text-secondary)', textAlign: 'center', maxWidth: 640 }}>
-          Completează formularul sau contactează-ne direct. Echipa Pegasus AI răspunde în maxim 24 de ore.
-        </p>
-      </section>
-
-      {/* Contact Content */}
-      <section style={{ display: 'flex', gap: 48, padding: '40px 120px' }}>
-        {/* Form */}
-        <form onSubmit={handleSubmit} style={{
-          flex: 1,
-          background: 'var(--pg-bg-card)',
-          borderRadius: 20,
-          padding: 40,
-          border: '1px solid var(--pg-border)',
+        {/* Hero Content */}
+        <div style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 28,
+          alignItems: 'center',
+          gap: 24,
+          padding: '80px 120px 60px',
+          width: '100%',
         }}>
-          <h2 style={{ fontFamily: 'var(--pg-heading)', fontSize: 26, fontWeight: 700, color: 'var(--pg-text)' }}>Trimite-ne un mesaj</h2>
-          <p style={{ fontFamily: 'var(--pg-body)', fontSize: 15, lineHeight: 1.6, color: 'var(--pg-text-secondary)' }}>
-            Descrie-ne proiectul tău și te vom contacta cu o soluție personalizată.
+          <div style={{
+            borderRadius: 100,
+            background: '#6C63FF1A',
+            padding: '8px 20px',
+          }}>
+            <span style={{ fontFamily: 'var(--pg-heading)', fontSize: 12, fontWeight: 700, letterSpacing: 2, color: '#6C63FF' }}>CONTACT</span>
+          </div>
+          <h1 style={{
+            fontFamily: 'var(--pg-heading)',
+            fontSize: 42,
+            fontWeight: 700,
+            color: '#FFFFFF',
+            textAlign: 'center',
+            maxWidth: 900,
+          }}>
+            Hai Să Vorbim Despre Viitorul Afacerii Tale
+          </h1>
+          <p style={{
+            fontFamily: 'var(--pg-body)',
+            fontSize: 18,
+            lineHeight: 1.6,
+            color: '#A0AEC0',
+            textAlign: 'center',
+            maxWidth: 700,
+          }}>
+            Completează formularul de mai jos sau contactează-ne direct. Răspundem în maximum 24 de ore.
           </p>
+          <div style={{ width: 60, height: 4, background: '#6C63FF' }} />
+        </div>
+      </section>
 
-          {/* Name Row */}
-          <div style={{ display: 'flex', gap: 16 }}>
-            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
-              <label style={labelStyle}>Nume complet</label>
-              <input name="name" value={form.name} onChange={handleChange} placeholder="ex. Ion Popescu" style={inputStyle} required />
-            </div>
+      {/* Content Section */}
+      <section style={{
+        display: 'flex',
+        gap: 32,
+        padding: '0 120px 60px',
+        background: '#0A0F1C',
+      }}>
+        {/* Left Column - Form */}
+        <form onSubmit={handleSubmit} style={{
+          flex: 1,
+          background: '#111827',
+          borderRadius: 16,
+          padding: 40,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 24,
+        }}>
+          <h2 style={{ fontFamily: 'var(--pg-heading)', fontSize: 24, fontWeight: 700, color: '#FFFFFF' }}>
+            Trimite-ne un mesaj
+          </h2>
+
+          {/* Nume complet */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
+            <label style={labelStyle}>Nume complet</label>
+            <input
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Introduceți numele complet"
+              style={inputStyle}
+              required
+            />
+          </div>
+
+          {/* Email + Telefon Row */}
+          <div style={{ display: 'flex', gap: 16, width: '100%' }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
               <label style={labelStyle}>Email</label>
-              <input name="email" type="email" value={form.email} onChange={handleChange} placeholder="email@exemplu.md" style={inputStyle} required />
+              <input
+                name="email"
+                type="email"
+                value={form.email}
+                onChange={handleChange}
+                placeholder="email@exemplu.com"
+                style={inputStyle}
+                required
+              />
+            </div>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <label style={labelStyle}>Telefon</label>
+              <input
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                placeholder="+373..."
+                style={inputStyle}
+              />
             </div>
           </div>
 
-          {/* Company */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {/* Companie */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
             <label style={labelStyle}>Companie</label>
-            <input name="company" value={form.company} onChange={handleChange} placeholder="Numele companiei" style={inputStyle} />
+            <input
+              name="company"
+              value={form.company}
+              onChange={handleChange}
+              placeholder="Numele companiei"
+              style={inputStyle}
+            />
           </div>
 
-          {/* Subject */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-            <label style={labelStyle}>Subiect</label>
+          {/* Serviciu de interes */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
+            <label style={labelStyle}>Serviciu de interes</label>
             <div style={{ position: 'relative' }}>
-              <select name="subject" value={form.subject} onChange={handleChange} style={{
-                ...inputStyle,
-                appearance: 'none',
-                paddingRight: 40,
-              }}>
-                <option value="">Selectează un subiect</option>
+              <select
+                name="service"
+                value={form.service}
+                onChange={handleChange}
+                style={{
+                  ...inputStyle,
+                  appearance: 'none',
+                  paddingRight: 40,
+                  cursor: 'pointer',
+                }}
+              >
+                <option value="">Selectează un serviciu</option>
                 <option value="pegasus-flow">Pegasus Flow</option>
-                <option value="consultanta">Consultanță AI</option>
-                <option value="integrare">Integrare Custom</option>
-                <option value="altele">Altele</option>
+                <option value="qa-callcenter">QA Call Center</option>
+                <option value="analiza-predictiva">Analiză Predictivă</option>
+                <option value="securitate">Securitate Avansată</option>
               </select>
-              <ChevronDown size={16} color="var(--pg-text-muted)" style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} />
+              <ChevronDown size={20} color="#64748B" style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none' }} />
             </div>
           </div>
 
-          {/* Message */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+          {/* Mesaj */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
             <label style={labelStyle}>Mesaj</label>
             <textarea
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="Spune-ne cum te putem ajuta..."
+              placeholder="Descrie-ne proiectul sau întrebarea ta..."
               required
               style={{
-                width: '100%',
-                height: 130,
-                background: '#0A0F1C',
-                border: '1px solid var(--pg-border)',
-                borderRadius: 10,
-                padding: 16,
-                color: 'var(--pg-text)',
-                fontFamily: 'var(--pg-body)',
-                fontSize: 14,
-                outline: 'none',
+                ...inputStyle,
+                height: 140,
                 resize: 'vertical',
               }}
             />
@@ -157,156 +219,160 @@ export default function Contact() {
           {/* Submit */}
           <button type="submit" disabled={status === 'sending'} style={{
             width: '100%',
-            height: 52,
-            background: 'var(--pg-accent)',
+            background: '#6C63FF',
             borderRadius: 12,
             border: 'none',
+            padding: '16px 0',
             color: '#FFFFFF',
-            fontFamily: 'var(--pg-body)',
+            fontFamily: 'var(--pg-heading)',
             fontSize: 16,
-            fontWeight: 600,
+            fontWeight: 700,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: 8,
+            cursor: 'pointer',
           }}>
-            {status === 'sending' ? 'Se trimite...' : <><span>Trimite Mesajul</span> <Send size={18} /></>}
+            {status === 'sending' ? 'Se trimite...' : <><span>Trimite Mesajul</span> <Send size={20} color="#FFFFFF" /></>}
           </button>
 
           {status === 'success' && <p style={{ color: 'var(--pg-teal)', fontSize: 14 }}>{statusMsg}</p>}
           {status === 'error' && <p style={{ color: '#FF5C33', fontSize: 14 }}>{statusMsg}</p>}
         </form>
 
-        {/* Sidebar */}
-        <div style={{ width: 420, display: 'flex', flexDirection: 'column', gap: 24 }}>
-          {/* Info Card */}
-          <div style={{
-            background: 'var(--pg-bg-card)',
-            borderRadius: 20,
-            padding: 32,
-            border: '1px solid var(--pg-border)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 24,
-          }}>
-            <h3 style={{ fontFamily: 'var(--pg-heading)', fontSize: 22, fontWeight: 600, color: 'var(--pg-text)' }}>Informații de contact</h3>
-            {[
-              { icon: <Mail size={20} color="var(--pg-accent)" />, iconBg: '#6C63FF15', label: 'Email', value: 'info@pegasus-ai.md' },
-              { icon: <Phone size={20} color="var(--pg-teal)" />, iconBg: '#00D4AA15', label: 'Telefon', value: '+373 22 123 456' },
-              { icon: <MapPin size={20} color="var(--pg-accent)" />, iconBg: '#6C63FF15', label: 'Adresă', value: 'Str. Pușkin 22, Chișinău, Moldova' },
-            ].map((item) => (
-              <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                <div style={{
-                  width: 44,
-                  height: 44,
-                  borderRadius: 12,
-                  background: item.iconBg,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}>
-                  {item.icon}
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span style={{ fontFamily: 'var(--pg-body)', fontSize: 12, fontWeight: 500, color: 'var(--pg-text-muted)' }}>{item.label}</span>
-                  <span style={{ fontFamily: 'var(--pg-body)', fontSize: 15, fontWeight: 500, color: 'var(--pg-text)' }}>{item.value}</span>
-                </div>
-              </div>
-            ))}
+        {/* Right Column - Info */}
+        <div style={{
+          width: 420,
+          background: '#111827',
+          borderRadius: 16,
+          padding: 40,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 24,
+        }}>
+          <h2 style={{ fontFamily: 'var(--pg-heading)', fontSize: 24, fontWeight: 700, color: 'var(--pg-text)' }}>
+            Informații de Contact
+          </h2>
+
+          {/* Email */}
+          <div style={{ display: 'flex', gap: 16, width: '100%' }}>
+            <Mail size={20} color="var(--pg-accent)" style={{ flexShrink: 0, marginTop: 2 }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <span style={{ fontFamily: 'var(--pg-body)', fontSize: 16, fontWeight: 700, color: 'var(--pg-text)' }}>Email:</span>
+              <span style={{ fontFamily: 'var(--pg-body)', fontSize: 16, color: 'var(--pg-text-secondary)' }}>contact@pegasus-ai.md</span>
+            </div>
           </div>
 
-          {/* Hours Card */}
-          <div style={{
-            background: 'var(--pg-bg-card)',
-            borderRadius: 20,
-            padding: 32,
-            border: '1px solid var(--pg-border)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 20,
-          }}>
-            <h3 style={{ fontFamily: 'var(--pg-heading)', fontSize: 18, fontWeight: 600, color: 'var(--pg-text)' }}>Program de lucru</h3>
-            {[
-              { day: 'Luni — Vineri', time: '09:00 — 18:00', timeColor: 'var(--pg-teal)' },
-              { day: 'Sâmbătă', time: '10:00 — 14:00', timeColor: 'var(--pg-text)' },
-              { day: 'Duminică', time: 'Închis', timeColor: 'var(--pg-text-muted)' },
-            ].map((h) => (
-              <div key={h.day} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: 'var(--pg-text-secondary)' }}>{h.day}</span>
-                <span style={{ fontFamily: 'var(--pg-body)', fontSize: 14, fontWeight: 600, color: h.timeColor }}>{h.time}</span>
-              </div>
-            ))}
+          {/* Telefon */}
+          <div style={{ display: 'flex', gap: 16, width: '100%' }}>
+            <Phone size={20} color="var(--pg-accent)" style={{ flexShrink: 0, marginTop: 2 }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <span style={{ fontFamily: 'var(--pg-body)', fontSize: 16, fontWeight: 700, color: 'var(--pg-text)' }}>Telefon:</span>
+              <span style={{ fontFamily: 'var(--pg-body)', fontSize: 16, color: 'var(--pg-text-secondary)' }}>+373 69 123 456</span>
+            </div>
           </div>
 
-          {/* Map Placeholder */}
-          <div style={{
-            background: 'var(--pg-bg-card)',
-            borderRadius: 20,
-            border: '1px solid var(--pg-border)',
-            height: 200,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 12,
-          }}>
-            <Map size={36} color="var(--pg-text-muted)" />
-            <span style={{ fontFamily: 'var(--pg-body)', fontSize: 14, fontWeight: 500, color: 'var(--pg-text-muted)' }}>Chișinău, Moldova</span>
-            <span style={{ fontFamily: 'var(--pg-body)', fontSize: 13, color: 'var(--pg-accent)' }}>Vezi pe Google Maps →</span>
+          {/* Adresă */}
+          <div style={{ display: 'flex', gap: 16, width: '100%' }}>
+            <MapPin size={20} color="var(--pg-accent)" style={{ flexShrink: 0, marginTop: 2 }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <span style={{ fontFamily: 'var(--pg-body)', fontSize: 16, fontWeight: 700, color: 'var(--pg-text)' }}>Adresă:</span>
+              <span style={{ fontFamily: 'var(--pg-body)', fontSize: 16, lineHeight: 1.5, color: 'var(--pg-text-secondary)', maxWidth: 320 }}>Str. Studenților 9/8, Chișinău, MD-2045, Moldova</span>
+            </div>
+          </div>
+
+          {/* Program */}
+          <div style={{ display: 'flex', gap: 16, width: '100%' }}>
+            <Clock4 size={20} color="var(--pg-accent)" style={{ flexShrink: 0, marginTop: 2 }} />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <span style={{ fontFamily: 'var(--pg-body)', fontSize: 16, fontWeight: 700, color: 'var(--pg-text)' }}>Program:</span>
+              <span style={{ fontFamily: 'var(--pg-body)', fontSize: 16, color: 'var(--pg-text-secondary)' }}>Luni – Vineri, 09:00 – 18:00</span>
+            </div>
+          </div>
+
+          {/* Divider */}
+          <div style={{ width: '100%', height: 1, background: 'var(--pg-border)' }} />
+
+          {/* Note */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <Clock4 size={16} color="var(--pg-teal)" />
+            <span style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: 'var(--pg-teal)' }}>Răspundem în max. 24h</span>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* Map Section */}
       <section style={{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        gap: 40,
-        padding: '80px 200px',
-        background: 'linear-gradient(180deg, #6C63FF08 0%, #0A0F1C 100%)',
+        gap: 16,
+        padding: '0 120px 60px',
+        background: '#0A0F1C',
       }}>
-        <span style={{ fontFamily: 'var(--pg-body)', fontSize: 13, fontWeight: 600, letterSpacing: 2, color: 'var(--pg-teal)' }}>ÎNTREBĂRI FRECVENTE</span>
-        <h2 style={{ fontFamily: 'var(--pg-heading)', fontSize: 36, fontWeight: 700, color: 'var(--pg-text)', textAlign: 'center' }}>
-          Ai întrebări? Avem răspunsuri.
-        </h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: '100%' }}>
-          {/* FAQ 1 - Expanded */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Map size={20} color="#6C63FF" />
+          <span style={{ fontFamily: 'var(--pg-heading)', fontSize: 20, fontWeight: 600, color: '#FFFFFF' }}>Locația Noastră</span>
+        </div>
+        <div style={{
+          width: '100%',
+          height: 300,
+          borderRadius: 16,
+          overflow: 'hidden',
+          border: '1px solid #1E293B',
+          background: 'radial-gradient(circle, #1A2035 0%, #111827 100%)',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: 12,
+        }}>
+          <MapPin size={40} color="#6C63FF" />
+          <span style={{ fontFamily: 'var(--pg-heading)', fontSize: 16, fontWeight: 600, color: '#FFFFFF' }}>Str. Studenților 9/8, Chișinău</span>
+          <span style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: '#A0AEC0' }}>MD-2045, Moldova</span>
           <div style={{
-            background: 'var(--pg-bg-card)',
-            borderRadius: 14,
-            padding: '24px 28px',
-            border: '1px solid var(--pg-border)',
             display: 'flex',
-            flexDirection: 'column',
-            gap: 12,
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 8,
+            padding: '10px 24px',
+            borderRadius: 8,
+            background: '#6C63FF22',
+            border: '1px solid #6C63FF44',
           }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontFamily: 'var(--pg-heading)', fontSize: 16, fontWeight: 600, color: 'var(--pg-text)' }}>Cât durează implementarea Pegasus Flow?</span>
-              <ChevronDown size={18} color="var(--pg-text-muted)" />
-            </div>
-            <p style={{ fontFamily: 'var(--pg-body)', fontSize: 14, lineHeight: 1.7, color: 'var(--pg-text-secondary)' }}>
-              Implementarea standard durează între 2-4 săptămâni, în funcție de complexitatea proceselor tale. Oferim onboarding dedicat și suport continuu.
-            </p>
+            <ExternalLink size={16} color="#6C63FF" />
+            <span style={{ fontFamily: 'var(--pg-body)', fontSize: 14, fontWeight: 600, color: '#6C63FF' }}>Deschide în Google Maps</span>
           </div>
+        </div>
+      </section>
 
-          {/* FAQ 2-4 Collapsed */}
+      {/* Social Section */}
+      <section style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 20,
+        padding: '40px 120px',
+        background: '#0A0F1C',
+      }}>
+        <span style={{ fontFamily: 'var(--pg-heading)', fontSize: 20, fontWeight: 600, color: '#FFFFFF' }}>Conectează-te cu noi</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
           {[
-            'Este necesară experiență tehnică pentru a folosi platforma?',
-            'Ce tipuri de sisteme pot fi integrate cu Pegasus Flow?',
-            'Oferiți suport după implementare?',
-          ].map((q) => (
-            <div key={q} style={{
-              background: 'var(--pg-bg-card)',
-              borderRadius: 14,
-              padding: '24px 28px',
-              border: '1px solid var(--pg-border)',
+            { Icon: Linkedin, name: 'linkedin' },
+            { Icon: Facebook, name: 'facebook' },
+            { Icon: Github, name: 'github' },
+          ].map(({ Icon, name }) => (
+            <div key={name} style={{
+              width: 48,
+              height: 48,
+              borderRadius: 12,
+              background: '#111827',
+              border: '1px solid #1E293B',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span style={{ fontFamily: 'var(--pg-heading)', fontSize: 16, fontWeight: 600, color: 'var(--pg-text)' }}>{q}</span>
-                <ChevronRight size={18} color="var(--pg-text-muted)" style={{ flexShrink: 0 }} />
-              </div>
+              <Icon size={24} color="#A0AEC0" />
             </div>
           ))}
         </div>
@@ -316,32 +382,35 @@ export default function Contact() {
       <footer style={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 32,
-        padding: '48px 120px',
+        gap: 24,
+        padding: '40px 60px',
         background: '#060A14',
-        borderTop: '1px solid var(--pg-border)',
+        borderTop: '1px solid #1E293B',
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <Hexagon size={28} color="var(--pg-accent)" />
-            <span style={{ fontFamily: 'var(--pg-heading)', fontSize: 18, fontWeight: 700, color: 'var(--pg-text)' }}>Pegasus AI</span>
+            <Cpu size={24} color="#6C63FF" />
+            <span style={{ fontFamily: 'var(--pg-heading)', fontSize: 18, fontWeight: 700, color: '#FFFFFF' }}>Pegasus.AI</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
-            <Link to="/" style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: 'var(--pg-text-muted)' }}>Acasă</Link>
-            <Link to="/about" style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: 'var(--pg-text-muted)' }}>Despre Noi</Link>
-            <Link to="/services" style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: 'var(--pg-text-muted)' }}>Servicii</Link>
-            <Link to="/contact" style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: 'var(--pg-text-muted)' }}>Contact</Link>
+            <Link to="/" style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: '#A0AEC0' }}>Acasă</Link>
+            <Link to="/about" style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: '#A0AEC0' }}>Despre</Link>
+            <Link to="/services" style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: '#A0AEC0' }}>Servicii</Link>
+            <Link to="/contact" style={{ fontFamily: 'var(--pg-body)', fontSize: 14, color: '#A0AEC0' }}>Contact</Link>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            {/* social placeholders */}
+            <Linkedin size={20} color="#64748B" />
+            <Twitter size={20} color="#64748B" />
+            <Github size={20} color="#64748B" />
           </div>
         </div>
-        <div style={{ width: '100%', height: 1, background: 'var(--pg-border)' }} />
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <span style={{ fontFamily: 'var(--pg-body)', fontSize: 13, color: 'var(--pg-text-muted)' }}>© 2026 Pegasus AI Systems. Toate drepturile rezervate.</span>
-          <div style={{ display: 'flex', gap: 24 }}>
-            <span style={{ fontFamily: 'var(--pg-body)', fontSize: 13, color: 'var(--pg-text-muted)' }}>Politica de confidențialitate</span>
-            <span style={{ fontFamily: 'var(--pg-body)', fontSize: 13, color: 'var(--pg-text-muted)' }}>Termeni și condiții</span>
+        <div style={{ width: '100%', height: 1, background: '#1E293B' }} />
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
+          <span style={{ fontFamily: 'var(--pg-body)', fontSize: 12, color: '#64748B' }}>© 2026 Pegasus AI Systems. Toate drepturile rezervate.</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+            <span style={{ fontFamily: 'var(--pg-body)', fontSize: 12, color: '#64748B' }}>Termeni și Condiții</span>
+            <span style={{ fontFamily: 'var(--pg-body)', fontSize: 12, color: '#64748B' }}>Politica de Confidențialitate</span>
+            <span style={{ fontFamily: 'var(--pg-body)', fontSize: 12, color: '#64748B' }}>Cookies</span>
           </div>
         </div>
       </footer>
