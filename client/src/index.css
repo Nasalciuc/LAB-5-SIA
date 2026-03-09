@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --pg-accent: #6C63FF;
+  --pg-accent-light: #8B83FF;
+  --pg-bg: #0A0F1C;
+  --pg-bg-card: #111827;
+  --pg-bg-elevated: #1E293B;
+  --pg-border: #1E293B;
+  --pg-teal: #00D4AA;
+  --pg-text: #FFFFFF;
+  --pg-text-muted: #64748B;
+  --pg-text-secondary: #A0AEC0;
+  --pg-heading: 'Poppins', sans-serif;
+  --pg-body: 'Open Sans', sans-serif;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: var(--pg-bg);
+  color: var(--pg-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, textarea, select {
+  font-family: inherit;
+}
