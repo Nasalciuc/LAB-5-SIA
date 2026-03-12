@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pegasus AI Systems — Automatizare AI pentru Afaceri din Moldova</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --color-main-bg: #0A0F1C;
+            --color-alt-bg: #111827;
+            --color-borders-pills: #1E293B;
+            --color-primary-accent: #6C63FF;
+            --color-darker-accent: #4F46E5;
+            --color-teal-secondary: #00D4AA;
+            --color-muted-text: #A0AEC0;
+            --color-subtle-text: #64748B;
+            --color-heading: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--color-main-bg);
+            color: var(--color-muted-text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--color-heading);
+            margin-top: 0;
+            margin-bottom: 0.5em;
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; font-weight: 700; }
+        h2 { font-size: 2.8rem; font-weight: 600; }
+        h3 { font-size: 2.2rem; font-weight: 600; }
+        h4 { font-size: 1.8rem; font-weight: 500; }
+
+        a {
+            color: var(--color-primary-accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--color-teal-secondary);
+        }
+
+        p {
+            margin-bottom: 1em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-main-bg);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-heading);
+        }
+
+        .navbar .nav-links a {
+            color: var(--color-muted-text);
+            margin-left: 30px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .nav-links a:hover {
+            color: var(--color-primary-accent);
+        }
+
+        .navbar .cta-button {
+            background: linear-gradient(90deg, var(--color-primary-accent), var(--color-darker-accent));
+            color: var(--color-heading);
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .navbar .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+            color: var(--color-heading); /* Ensure text color stays white */
+        }
+
+        /* Hero Section */
+        #home .hero {
+            text-align: center;
+            padding: 150px 0;
+            background: linear-gradient(135deg, rgba(10, 15, 28, 0.9), rgba(17, 24, 39, 0.8)), url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') center/cover no-repeat;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            position: relative;
+        }
+
+        #home .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom right, #6C63FF22, #00D4AA22);
+            opacity: 0.7;
+            z-index: 1;
+        }
+
+        #home .hero > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        #home .hero h1 {
+            font-size: 4.5rem;
+            max-width: 900px;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        #home .hero p {
+            font-size: 1.4rem;
+            max-width: 800px;
+            color: var(--color-muted-text);
+            margin-bottom: 40px;
+        }
+
+        #home .hero .cta-group {
+            display: flex;
+            gap: 20px;
+        }
+
+        #home .hero .cta-group .btn {
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        #home .hero .cta-group .btn-primary {
+            background: linear-gradient(45deg, var(--color-primary-accent), var(--color-darker-accent));
+            color: var(--color-heading);
+            border: none;
+        }
+
+        #home .hero .cta-group .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(108, 99, 255, 0.5);
+        }
+
+        #home .hero .cta-group .btn-secondary {
+            background-color: transparent;
+            color: var(--color-teal-secondary);
+            border: 2px solid var(--color-teal-secondary);
+        }
+
+        #home .hero .cta-group .btn-secondary:hover {
+            background-color: var(--color-teal-secondary);
+            color: var(--color-main-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 170, 0.3);
+        }
+
+        /* Dashboard Mockup */
+        .dashboard-mockup {
+            padding-top: 50px;
+            background-color: var(--color-alt-bg);
+            text-align: center;
+        }
+        .dashboard-mockup img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transform: translateY(30px); /* Overlap with hero for visual flow */
+        }
+
+
+        /* Features Section */
+        .features-section {
+            background-color: var(--color-main-bg);
+            padding-top: 50px; /* Adjust as mockup overlaps */
+            padding-bottom: 100px;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            margin-bottom: 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--color-alt-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--color-borders-pills);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--color-teal-secondary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--color-muted-text);
+            font-size: 1rem;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background-color: var(--color-alt-bg);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item h2 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--color-primary-accent);
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 1.2rem;
+            color: var(--color-muted-text);
+            font-weight: 500;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: var(--color-main-bg);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .testimonials-section h2 {
+            margin-bottom: 60px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--color-alt-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid var(--color-borders-pills);
+            text-align: left;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+        }
+
+        .testimonial-card p.quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--color-muted-text);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .testimonial-card .author {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .testimonial-card .author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            border: 2px solid var(--color-teal-secondary);
+        }
+
+        .testimonial-card .author-info strong {
+            display: block;
+            color: var(--color-heading);
+            font-weight: 600;
+        }
+
+        .testimonial-card .author-info span {
+            color: var(--color-subtle-text);
+            font-size: 0.9rem;
+        }
+
+        /* Final CTA Section */
+        .final-cta-section {
+            padding: 100px 0;
+            background-color: var(--color-main-bg);
+            text-align: center;
+        }
+
+        .final-cta-box {
+            background: linear-gradient(135deg, var(--color-primary-accent), var(--color-darker-accent));
+            padding: 80px 40px;
+            border-radius: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--color-heading);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .final-cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transform: rotate(45deg);
+            animation: pulse-gradient 10s infinite alternate;
+        }
+
+        @keyframes pulse-gradient {
+            0% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+            100% { transform: rotate(360deg) scale(1.1); opacity: 0.5; }
+        }
+
+        .final-cta-box > * {
+            position: relative;
+            z-index: 1;
+        }
+
+
+        .final-cta-box h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+        }
+
+        .final-cta-box .btn {
+            background-color: var(--color-teal-secondary);
+            color: var(--color-main-bg);
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            border: none;
+        }
+
+        .final-cta-box .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 212, 170, 0.4);
+            background-color: #00E8B2; /* Slightly brighter teal */
+        }
+
+        /* About Section */
+        #about {
+            background-color: var(--color-main-bg);
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        #about .hero-about {
+            text-align: center;
+            padding-bottom: 80px;
+        }
+
+        #about .hero-about h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        #about .hero-about p {
+            font-size: 1.3rem;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--color-muted-text);
+        }
+
+        .story-section {
+            background-color: var(--color-alt-bg);
+            padding: 80px 0;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-bottom: 80px;
+        }
+
+        .story-section h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--color-heading);
+        }
+
+        .story-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-text p {
+            margin-bottom: 1.5em;
+            color: var(--color-muted-text);
+            font-size: 1.1rem;
+        }
+
+        .story-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        /* Values Section */
+        .values-section {
+            text-align: center;
+            padding-bottom: 100px;
+        }
+
+        .values-section h2 {
+            margin-bottom: 60px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: var(--color-alt-bg);
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid var(--color-borders-pills);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .value-card i {
+            font-size: 2.8rem;
+            color: var(--color-primary-accent);
+            margin-bottom: 20px;
+        }
+
+        .value-card h3 {
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+        }
+
+        .value-card p {
+            color: var(--color-muted-text);
+            font-size: 1rem;
+        }
+
+        /* About CTA */
+        .about-cta-section {
+            padding: 80px 0;
+            background-color: var(--color-alt-bg);
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+
+        .about-cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            color: var(--color-heading);
+        }
+
+        .about-cta-section .btn-secondary {
+            background-color: transparent;
+            color: var(--color-teal-secondary);
+            border: 2px solid var(--color-teal-secondary);
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .about-cta-section .btn-secondary:hover {
+            background-color: var(--color-teal-secondary);
+            color: var(--color-main-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 212, 170, 0.3);
+        }
+
+
+        /* Services Section */
+        #services {
+            background-color: var(--color-main-bg);
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        #services .hero-services {
+            text-align: center;
+            padding-bottom: 80px;
+        }
+
+        #services .hero-services h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .service-item {
+            background-color: var(--color-alt-bg);
+            padding: 50px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            border: 1px solid var(--color-borders-pills);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .service-item h3 {
+            font-size: 2.2rem;
+            color: var(--color-primary-accent);
+            margin-bottom: 20px;
+        }
+
+        .service-item p {
+            font-size: 1.1rem;
+            color: var(--color-muted-text);
+            margin-bottom: 1.5em;
+        }
+
+        .service-item ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5em;
+        }
+
+        .service-item ul li {
+            color: var(--color-muted-text);
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            font-size: 1rem;
+        }
+
+        .service-item ul li::before {
+            content: '✓';
+            color: var(--color-teal-secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background-color: var(--color-main-bg);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .pricing-section h2 {
+            margin-bottom: 60px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            align-items: stretch; /* Make cards same height */
+        }
+
+        .pricing-card {
+            background-color: var(--color-alt-bg);
+            padding: 40px;
+            border-radius: 15px;
+            border: 1px solid var(--color-borders-pills);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .pricing-card.recommended {
+            border-color: var(--color-primary-accent);
+            background: linear-gradient(145deg, var(--color-alt-bg), #182030);
+            box-shadow: 0 0 0 3px var(--color-primary-accent), 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        .pricing-card.recommended::before {
+            content: 'Recomandat';
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: var(--color-primary-accent);
+            color: var(--color-heading);
+            padding: 5px 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+            transform-origin: 0% 100%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .pricing-card h3 {
+            font-size: 2.2rem;
+            color: var(--color-heading);
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-teal-secondary);
+            margin-bottom: 20px;
+        }
+
+        .pricing-card .price span {
+            font-size: 1.2rem;
+            color: var(--color-muted-text);
+            font-weight: 400;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .pricing-card ul li {
+            color: var(--color-muted-text);
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 25px;
+            text-align: left;
+        }
+
+        .pricing-card ul li::before {
+            content: '✓';
+            color: var(--color-teal-secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .pricing-card .btn-select {
+            display: block;
+            background: linear-gradient(45deg, var(--color-primary-accent), var(--color-darker-accent));
+            color: var(--color-heading);
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 600;
+            margin-top: auto; /* Push button to bottom */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+        }
+
+        .pricing-card .btn-select:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .pricing-card.recommended .btn-select {
+            background: var(--color-teal-secondary);
+            color: var(--color-main-bg);
+        }
+        .pricing-card.recommended .btn-select:hover {
+            background-color: #00E8B2;
+            box-shadow: 0 8px 20px rgba(0, 212, 170, 0.4);
+        }
+
+        /* Services CTA */
+        .services-cta-section {
+            padding: 80px 0;
+            background-color: var(--color-alt-bg);
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+
+        .services-cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            color: var(--color-heading);
+        }
+
+        .services-cta-section .btn-secondary {
+            background-color: transparent;
+            color: var(--color-teal-secondary);
+            border: 2px solid var(--color-teal-secondary);
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .services-cta-section .btn-secondary:hover {
+            background-color: var(--color-teal-secondary);
+            color: var(--color-main-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 212, 170, 0.3);
+        }
+
+
+        /* Contact Section */
+        #contact {
+            background-color: var(--color-main-bg);
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        #contact .hero-contact {
+            text-align: center;
+            padding-bottom: 80px;
+        }
+
+        #contact .hero-contact h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        #contact .hero-contact p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--color-muted-text);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            background-color: var(--color-alt-bg);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--color-muted-text);
+            font-weight: 500;
+        }
+
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--color-borders-pills);
+            background-color: var(--color-main-bg);
+            color: var(--color-heading);
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            border-color: var(--color-primary-accent);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.3);
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background: linear-gradient(45deg, var(--color-primary-accent), var(--color-darker-accent));
+            color: var(--color-heading);
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(108, 99, 255, 0.4);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--color-heading);
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            color: var(--color-muted-text);
+        }
+
+        .contact-info p i {
+            color: var(--color-teal-secondary);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            width: 25px; /* Align icons */
+        }
+
+        .map-container {
+            margin-top: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--color-borders-pills);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--color-alt-bg);
+            padding: 60px 0 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--color-borders-pills);
+        }
+
+        .footer .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            text-align: left;
+        }
+
+        .footer .footer-col {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 30px;
+        }
+
+        .footer .footer-col.logo-col {
+            flex: 1.5;
+        }
+
+        .footer .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--color-heading);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer .logo-col p {
+            font-size: 0.95rem;
+            color: var(--color-muted-text);
+            line-height: 1.8;
+            max-width: 300px;
+        }
+
+        .footer h4 {
+            font-size: 1.3rem;
+            color: var(--color-heading);
+            margin-bottom: 25px;
+        }
+
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer ul li a {
+            color: var(--color-muted-text);
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer ul li a:hover {
+            color: var(--color-primary-accent);
+        }
+
+        .footer .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-borders-pills);
+            color: var(--color-heading);
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer .social-links a:hover {
+            background-color: var(--color-primary-accent);
+            transform: translateY(-5px);
+            color: var(--color-heading); /* Ensure icon color stays white */
+        }
+
+        .footer .bottom-bar {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--color-borders-pills);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--color-subtle-text);
+        }
+
+        .footer .bottom-bar p {
+            margin: 5px 0;
+        }
+
+        .footer .bottom-bar .love-text {
+            color: var(--color-teal-secondary);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3.8rem; }
+            h2 { font-size: 2.4rem; }
+            h3 { font-size: 2rem; }
+            h4 { font-size: 1.6rem; }
+
+            #home .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .navbar .nav-links {
+                display: none; /* Hide for mobile, will add a hamburger later if needed */
+            }
+            .navbar .cta-button {
+                margin-left: auto; /* Push button right if no nav links */
+            }
+
+            .story-content {
+                grid-template-columns: 1fr;
+            }
+            .story-image {
+                order: -1; /* Image first on mobile */
+                margin-bottom: 40px;
+            }
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            h2 { font-size: 2rem; }
+            h3 { font-size: 1.6rem; }
+
+            section {
+                padding: 80px 0;
+            }
+
+            #home .hero {
+                padding: 120px 0;
+            }
+            #home .hero h1 {
+                font-size: 2.5rem;
+                max-width: 90%;
+            }
+            #home .hero p {
+                font-size: 1.1rem;
+                max-width: 90%;
+            }
+            #home .hero .cta-group {
+                flex-direction: column;
+                gap: 15px;
+            }
+            #home .hero .cta-group .btn {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .features-grid, .stats-grid, .testimonial-grid, .values-grid, .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .final-cta-box {
+                padding: 60px 20px;
+            }
+            .final-cta-box h2 {
+                font-size: 2.2rem;
+            }
+
+            .footer .container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .footer .footer-col {
+                min-width: unset;
+                width: 100%;
+                margin-bottom: 40px;
+            }
+            .footer .logo-col p {
+                max-width: none;
+            }
+            .footer h4 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+            .footer ul {
+                text-align: center;
+            }
+            .footer .social-links {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+            .footer .bottom-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            h3 { font-size: 1.4rem; }
+
+            .navbar .logo {
+                font-size: 1.5rem;
+            }
+            .navbar .cta-button {
+                padding: 8px 18px;
+                font-size: 0.9rem;
+            }
+
+            #home .hero h1 {
+                font-size: 2rem;
+            }
+            #home .hero p {
+                font-size: 1rem;
+            }
+
+            .feature-card, .testimonial-card, .value-card, .pricing-card {
+                padding: 25px;
+            }
+
+            .stat-item h2 {
+                font-size: 3rem;
+            }
+            .stat-item p {
+                font-size: 1rem;
+            }
+
+            .final-cta-box h2 {
+                font-size: 1.8rem;
+            }
+            .final-cta-box .btn {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+
+            .service-item {
+                padding: 30px;
+            }
+            .service-item h3 {
+                font-size: 1.8rem;
+            }
+            .pricing-card .price {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">PEGASUS AI</a>
+            <div class="nav-links">
+                <a href="#home">Acasă</a>
+                <a href="#about">Despre Noi</a>
+                <a href="#services">Servicii</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <a href="#contact" class="cta-button">Solicită Demo</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- HOME Section -->
+        <section id="home">
+            <meta name="title" content="Pegasus AI Systems — Automatizare AI pentru Afaceri din Moldova">
+            <div class="hero">
+                <div class="container">
+                    <h1>Automatizează-ți Afacerea cu Inteligență Artificială</h1>
+                    <p>Pegasus Flow este platforma no-code de automatizare AI care transformă operațiunile SMB-urilor din Moldova și Europa de Est, oferind eficiență, scalabilitate și rezultate măsurabile.</p>
+                    <div class="cta-group">
+                        <a href="#services" class="btn btn-primary">Descoperă Pegasus Flow</a>
+                        <a href="#contact" class="btn btn-secondary">Contactează-ne</a>
+                    </div>
+                </div>
+            </div>
+            <div class="dashboard-mockup">
+                <div class="container">
+                    <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Pegasus Flow Dashboard Mockup" loading="lazy">
+                </div>
+            </div>
+            <div class="features-section">
+                <div class="container">
+                    <h2>Tot ce ai nevoie pentru automatizare</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-brain"></i>
+                            <h3>Automatizare Inteligentă</h3>
+                            <p>Creează fluxuri de lucru inteligente, bazate pe AI, care învață și se adaptează nevoilor afacerii tale, eliminând sarcinile repetitive și maximizând eficiența.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-plug"></i>
+                            <h3>Integrare Simplă</h3>
+                            <p>Conectează Pegasus Flow cu peste 200 de aplicații și sisteme pe care le utilizezi deja (CRM, ERP, email, baze de date), fără a scrie o singură linie de cod.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>Rezultate Măsurabile</h3>
+                            <p>Monitorizează performanța automatizărilor în timp real cu tablouri de bord intuitive și rapoarte detaliate, pentru a vedea impactul direct asupra costurilor și productivității.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-section">
+                <div class="container">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <h2>40%</h2>
+                            <p>Reducere costuri</p>
+                        </div>
+                        <div class="stat-item">
+                            <h2>500+</h2>
+                            <p>Fluxuri automatizate</p>
+                        </div>
+                        <div class="stat-item">
+                            <h2>50+</h2>
+                            <p>Companii partenere</p>
+                        </div>
+                        <div class="stat-item">
+                            <h2>99.9%</h2>
+                            <p>Uptime garantat</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonials-section">
+                <div class="container">
+                    <h2>Ce spun partenerii noștri</h2>
+                    <div class="testimonial-grid">
+                        <div class="testimonial-card">
+                            <p class="quote">"Pegasus Flow ne-a redus timpul de procesare a comenzilor cu 60%. Recomandăm!"</p>
+                            <div class="author">
+                                <img src="https://i.pravatar.cc/150?img=68" alt="Ion Moraru">
+                                <div class="author-info">
+                                    <strong>Ion Moraru</strong>
+                                    <span>Director Operațiuni, LogisTech SRL</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="quote">"Sistemul de QA ne-a ajutat să identificăm problemele de training mult mai rapid."</p>
+                            <div class="author">
+                                <img src="https://i.pravatar.cc/150?img=53" alt="Ana Cebotari">
+                                <div class="author-info">
+                                    <strong>Ana Cebotari</strong>
+                                    <span>Manager Call Center, TravelBook MD</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-card">
+                            <p class="quote">"Implementarea a durat 3 zile, nu 3 luni cum ne așteptam."</p>
+                            <div class="author">
+                                <img src="https://i.pravatar.cc/150?img=34" alt="Sergiu Rusu">
+                                <div class="author-info">
+                                    <strong>Sergiu Rusu</strong>
+                                    <span>CEO, GreenMarket</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="final-cta-section">
+                <div class="container">
+                    <div class="final-cta-box">
+                        <h2>Gata să-ți transformi afacerea?</h2>
+                        <a href="#contact" class="btn">Începe Gratuit &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT Section -->
+        <section id="about">
+            <meta name="title" content="Despre Pegasus AI Systems — Echipa AI din Chișinău">
+            <div class="hero-about">
+                <div class="container">
+                    <h1>Construim Viitorul Automatizării în Moldova</h1>
+                    <p>Suntem o echipă pasionată de ingineri AI din Chișinău, dedicați să aducem inovația și eficiența Inteligenței Artificiale în inima afacerilor tale.</p>
+                </div>
+            </div>
+            <div class="story-section">
+                <div class="container">
+                    <h2>Povestea Pegasus AI Systems</h2>
+                    <div class="story-content">
+                        <div class="story-text">
+                            <p>Pegasus AI Systems s-a născut din viziunea de a democratiza accesul la tehnologiile de Inteligență Artificială pentru întreprinderile mici și mijlocii din Moldova și Europa de Est. Am observat un decalaj semnificativ între potențialul imens al AI și resursele limitate de care dispun adesea companiile locale pentru a implementa astfel de soluții. Fondată de un grup de ingineri cu experiență vastă în machine learning, procesarea limbajului natural (NLP) și arhitecturi multi-agent, misiunea noastră a fost clară: să facem AI-ul accesibil, ușor de utilizat și, mai presus de toate, eficient.</p>
+                            <p>Am început prin a dezvolta Pegasus Flow, platforma noastră no-code de automatizare, concepută pentru a permite oricărei afaceri să-și creeze propriile fluxuri de lucru inteligente, fără a fi nevoie de cunoștințe de programare. Ne-am concentrat pe crearea unei interfețe intuitive și a unei integrări fluide cu sistemele existente, asigurându-ne că tranziția la automatizare este cât mai simplă și rapidă.</p>
+                            <p>Ceea ce ne diferențiază este abordarea noastră personalizată și înțelegerea profundă a pieței locale. Nu oferim doar produse, ci parteneriate strategice. Lucrăm îndeaproape cu fiecare client pentru a înțelege nevoile specifice, a identifica oportunitățile de automatizare și a implementa soluții care generează un impact real și măsurabil. Credem că succesul nostru este direct legat de succesul partenerilor noștri.</p>
+                            <p>Echipa noastră din Chișinău este motorul inovației, explorând constant cele mai noi tehnologii AI pentru a aduce soluții de vârf în regiune. De la optimizarea operațională la strategii de marketing inteligente și îmbunătățirea experienței clienților, Pegasus AI Systems este partenerul tău de încredere în călătoria către o afacere mai inteligentă și mai automatizată.</p>
+                        </div>
+                        <div class="story-image">
+                            <img src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Echipa Pegasus AI Systems lucrând" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="values-section">
+                <div class="container">
+                    <h2>Valorile Noastre</h2>
+                    <div class="values-grid">
+                        <div class="value-card">
+                            <i class="fas fa-lightbulb"></i>
+                            <h3>Inovație</h3>
+                            <p>Suntem mereu în căutarea celor mai noi tehnologii AI și a metodelor inovatoare pentru a oferi soluții de top clienților noștri.</p>
+                        </div>
+                        <div class="value-card">
+                            <i class="fas fa-shield-alt"></i>
+                            <h3>Transparență</h3>
+                            <p>Credem într-o comunicare deschisă, clară și onestă, de la prețuri la procese de implementare.</p>
+                        </div>
+                        <div class="value-card">
+                            <i class="fas fa-trophy"></i>
+                            <h3>Rezultate</h3>
+                            <p>Ne concentrăm pe impactul măsurabil. Soluțiile noastre sunt concepute pentru a genera valoare reală și creștere pentru afacerea ta.</p>
+                        </div>
+                        <div class="value-card">
+                            <i class="fas fa-handshake"></i>
+                            <h3>Parteneriat</h3>
+                            <p>Construim relații pe termen lung bazate pe încredere și colaborare, fiind alături de tine la fiecare pas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-cta-section">
+                <div class="container">
+                    <h2>Vrei să afli cum putem ajuta afacerea ta?</h2>
+                    <a href="#contact" class="btn-secondary">Hai să Discutăm &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES Section -->
+        <section id="services">
+            <meta name="title" content="Servicii AI: Pegasus Flow, QA Call Center, Marketing">
+            <div class="hero-services">
+                <div class="container">
+                    <h1>Soluții AI Care Lucrează Pentru Tine</h1>
+                    <p>De la automatizarea fluxurilor de lucru cu platforma noastră no-code, Pegasus Flow, la soluții personalizate de AI, suntem aici să transformăm modul în care afacerea ta operează.</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="service-item">
+                    <h3>Pegasus Flow — Platforma de Automatizare AI</h3>
+                    <p>Pegasus Flow este inima ofertei noastre: o platformă intuitivă, no-code, care permite oricărei afaceri să-și automatizeze procesele. Conectează email-ul, CRM-ul, bazele de date și alte aplicații într-un sistem inteligent care gestionează sarcinile repetitive, de la generarea de lead-uri la procesarea comenzilor. Implementare în mai puțin de 48 de ore și scalabilitate garantată pentru creșterea afacerii tale.</p>
+                    <ul>
+                        <li>Platformă no-code intuitivă</li>
+                        <li>Integrare cu 200+ aplicații</li>
+                        <li>Automatizări bazate pe AI</li>
+                        <li>Implementare rapidă (sub 48h)</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Quality Assurance pentru Call Center-uri</h3>
+                    <p>Transformă performanța call center-ului tău cu soluția noastră de QA bazată pe AI. Analizăm convorbirile telefonice folosind algoritmi multi-agent pentru a evalua peste 22 de criterii, oferind scoruri detaliate pentru fiecare agent și recomandări precise pentru îmbunătățirea trainingului și a experienței clienților. Identifică rapid punctele slabe și optimizează interacțiunile.</p>
+                    <ul>
+                        <li>Analiză multi-agent a convorbirilor</li>
+                        <li>Evaluare pe 22+ criterii</li>
+                        <li>Scoruri detaliate pentru agenți</li>
+                        <li>Recomandări personalizate de training</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Automatizare Marketing & Social Media</h3>
+                    <p>Optimizează-ți eforturile de marketing cu fluxuri inteligente de AI. De la crearea automată de conținut, la segmentarea avansată a audienței, testare A/B automatizată și raportare în timp real, soluțiile noastre te ajută să maximizezi ROI-ul și să atingi publicul potrivit la momentul potrivit. Lansează campanii mai eficiente și personalizează comunicarea la scară largă.</p>
+                    <ul>
+                        <li>Fluxuri de marketing inteligente</li>
+                        <li>Testare A/B și segmentare avansată</li>
+                        <li>Generare automată de conținut</li>
+                        <li>Raportare în timp real</li>
+                    </ul>
+                </div>
+                <div class="service-item">
+                    <h3>Consultanță & Implementare AI Personalizată</h3>
+                    <p>Ai un proces complex sau o idee inovatoare? Echipa noastră de experți AI oferă consultanță completă și servicii de implementare personalizate. De la analiza inițială a proceselor și identificarea oportunităților, la dezvoltarea soluțiilor AI bespoke (proof-of-concept) și integrarea completă în sistemele tale existente, te ghidăm de la idee la producție. Creăm soluții unice, adaptate perfect cerințelor tale.</p>
+                    <ul>
+                        <li>Analiză detaliată a proceselor</li>
+                        <li>Dezvoltare soluții AI bespoke</li>
+                        <li>Implementare de la PoC la producție</li>
+                        <li>Suport și optimizare continuă</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pricing-section">
+                <div class="container">
+                    <h2>Alege Pachetul Potrivit</h2>
+                    <div class="pricing-grid">
+                        <div class="pricing-card">
+                            <h3>Starter</h3>
+                            <div class="price">€299<span>/lună</span></div>
+                            <ul>
+                                <li>5 Fluxuri AI</li>
+                                <li>3 Utilizatori</li>
+                                <li>Integrare Email & CRM</li>
+                                <li>Suport Standard</li>
+                                <li>Raportare Bazică</li>
+                            </ul>
+                            <a href="#contact" class="btn-select">Alege Pachetul Starter</a>
+                        </div>
+                        <div class="pricing-card recommended">
+                            <h3>Professional</h3>
+                            <div class="price">€799<span>/lună</span></div>
+                            <ul>
+                                <li>20 Fluxuri AI</li>
+                                <li>10 Utilizatori</li>
+                                <li>Toate Integrările (200+)</li>
+                                <li>QA 100 Convorbiri/lună</li>
+                                <li>Tablouri de Bord Avansate</li>
+                                <li>Suport Prioritar</li>
+                            </ul>
+                            <a href="#contact" class="btn-select">Alege Pachetul Professional</a>
+                        </div>
+                        <div class="pricing-card">
+                            <h3>Enterprise</h3>
+                            <div class="price">Custom<span>/proiect</span></div>
+                            <ul>
+                                <li>Fluxuri AI Nelimitate</li>
+                                <li>Utilizatori Nelimitați</li>
+                                <li>Toate Integrările + Custom</li>
+                                <li>QA Convorbiri Nelimitate</li>
+                                <li>Soluții AI Personalizate</li>
+                                <li>Suport 24/7 & Manager Dedicat</li>
+                            </ul>
+                            <a href="#contact" class="btn-select">Contactează-ne pentru Enterprise</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="services-cta-section">
+                <div class="container">
+                    <h2>Nu ești sigur ce pachet ți se potrivește?</h2>
+                    <a href="#contact" class="btn-secondary">Cere o Consultanță Gratuită &rarr;</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT Section -->
+        <section id="contact">
+            <meta name="title" content="Contact — Pegasus AI Systems Chișinău">
+            <div class="hero-contact">
+                <div class="container">
+                    <h1>Hai Să Vorbim Despre Viitorul Afacerii Tale</h1>
+                    <p>Suntem aici să răspundem la întrebările tale și să te ajutăm să descoperi cum Inteligența Artificială poate transforma operațiunile companiei tale. Răspundem în maximum 24 de ore.</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <form action="#" method="POST">
+                            <label for="nume">Nume complet</label>
+                            <input type="text" id="nume" name="nume" required>
+
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+
+                            <label for="companie">Companie (opțional)</label>
+                            <input type="text" id="companie" name="companie">
+
+                            <label for="telefon">Telefon (opțional)</label>
+                            <input type="tel" id="telefon" name="telefon">
+
+                            <label for="serviciu">Serviciu de interes</label>
+                            <select id="serviciu" name="serviciu">
+                                <option value="pegasus-flow">Pegasus Flow</option>
+                                <option value="qa-call-center">QA Call Center</option>
+                                <option value="marketing-ai">Marketing AI</option>
+                                <option value="consultanta">Consultanță & Implementare AI</option>
+                                <option value="altele">Altele</option>
+                            </select>
+
+                            <label for="mesaj">Mesajul tău</label>
+                            <textarea id="mesaj" name="mesaj" rows="5" required></textarea>
+
+                            <button type="submit">Trimite Mesajul</button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Informații de Contact</h3>
+                        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:contact@pegasus-ai.md">contact@pegasus-ai.md</a></p>
+                        <p><i class="fas fa-phone-alt"></i> Telefon: <a href="tel:+37369123456">+373 69 123 456</a></p>
+                        <p><i class="fas fa-map-marker-alt"></i> Adresă: Str. Studenților 9/8, Chișinău, MD-2045, Moldova</p>
+                        <p><i class="fas fa-clock"></i> Program: Luni – Vineri, 09:00 – 18:00</p>
+
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2719.897003006451!2d28.847587715606456!3d47.04278787915234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97c11f4d9b23b%3A0x6b4c1a5e1f8a8b1a!2sStrada%20Studen%C8%9Bilor%209%2F8%2C%20Chi%C8%99in%C4%83u%202045%2C%20Moldova!5e0!3m2!1sen!2smd!4v1678627200000!5m2!1sen!2smd" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-col logo-col">
+                <a href="#home" class="logo">PEGASUS AI</a>
+                <p>Automatizare inteligentă pentru afacerea ta, bazată pe cele mai avansate tehnologii AI.</p>
+                <div class="social-links" style="margin-top: 20px;">
+                    <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Navigare</h4>
+                <ul>
+                    <li><a href="#home">Acasă</a></li>
+                    <li><a href="#about">Despre Noi</a></li>
+                    <li><a href="#services">Servicii</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:contact@pegasus-ai.md">contact@pegasus-ai.md</a></li>
+                    <li><a href="tel:+37369123456">+373 69 123 456</a></li>
+                    <li>Str. Studenților 9/8, Chișinău</li>
+                    <li>MD-2045, Moldova</li>
+                </ul>
+            </div>
+        </div>
+        <div class="bottom-bar">
+            <div class="container">
+                <p>&copy; 2026 Pegasus AI Systems. Toate drepturile rezervate.</p>
+                <p class="love-text">Dezvoltat cu 💙 în Chișinău, Moldova</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - (document.querySelector('.navbar').offsetHeight), // Adjust for sticky header
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Intersection Observer for scroll animations (basic example)
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        // observer.unobserve(entry.target); // Optional: stop observing after animation
+                    } else {
+                        // entry.target.classList.remove('animate-in'); // Optional: reset animation when out of view
+                    }
+                });
+            }, observerOptions);
+
+            // Add simple animation class for elements that should animate on scroll
+            // This is a placeholder for actual complex animations
+            document.querySelectorAll('.feature-card, .stat-item, .testimonial-card, .value-card, .service-item, .pricing-card, .final-cta-box, .story-section, .about-cta-section, .services-cta-section, .contact-content').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Add some basic CSS for animate-in class
+            const style = document.createElement('style');
+            style.innerHTML = `
+                .animate-in {
+                    opacity: 0;
+                    transform: translateY(20px);
+                    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+                }
+                .animate-in.animate-in { /* Double class to increase specificity */
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+                .features-grid .feature-card { transition-delay: 0.1s; }
+                .features-grid .feature-card:nth-child(2) { transition-delay: 0.2s; }
+                .features-grid .feature-card:nth-child(3) { transition-delay: 0.3s; }
+
+                .stats-grid .stat-item { transition-delay: 0.1s; }
+                .stats-grid .stat-item:nth-child(2) { transition-delay: 0.2s; }
+                .stats-grid .stat-item:nth-child(3) { transition-delay: 0.3s; }
+                .stats-grid .stat-item:nth-child(4) { transition-delay: 0.4s; }
+
+                .testimonial-grid .testimonial-card { transition-delay: 0.1s; }
+                .testimonial-grid .testimonial-card:nth-child(2) { transition-delay: 0.2s; }
+                .testimonial-grid .testimonial-card:nth-child(3) { transition-delay: 0.3s; }
+
+                .values-grid .value-card { transition-delay: 0.1s; }
+                .values-grid .value-card:nth-child(2) { transition-delay: 0.2s; }
+                .values-grid .value-card:nth-child(3) { transition-delay: 0.3s; }
+                .values-grid .value-card:nth-child(4) { transition-delay: 0.4s; }
+
+                .pricing-grid .pricing-card { transition-delay: 0.1s; }
+                .pricing-grid .pricing-card:nth-child(2) { transition-delay: 0.2s; }
+                .pricing-grid .pricing-card:nth-child(3) { transition-delay: 0.3s; }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
