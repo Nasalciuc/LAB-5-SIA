@@ -1,19 +1,33 @@
 import { Link, useLocation } from 'react-router-dom'
+import { Hexagon } from 'lucide-react'
+
+const links = [
+  { to: '/', label: 'Acasă' },
+  { to: '/about', label: 'Despre Noi' },
+  { to: '/services', label: 'Servicii' },
+  { to: '/contact', label: 'Contact' },
+]
 
 export default function Navbar() {
   const { pathname } = useLocation()
-
   return (
-    <nav className="navbar">
-      <div className="container">
-        <Link to="/" className="logo">PEGASUS AI</Link>
+    <nav className="nav">
+      <div className="nav-in">
+        <Link to="/" className="nav-logo">
+          <Hexagon size={22} />
+          <span>PEGASUS AI</span>
+        </Link>
         <div className="nav-links">
-          <Link to="/" className={pathname === '/' ? 'active' : ''}>Acasă</Link>
-          <Link to="/about" className={pathname === '/about' ? 'active' : ''}>Despre Noi</Link>
-          <Link to="/services" className={pathname === '/services' ? 'active' : ''}>Servicii</Link>
-          <Link to="/contact" className={pathname === '/contact' ? 'active' : ''}>Contact</Link>
+          {links.map((l) => (
+            <Link key={l.to} to={l.to} className={`nav-lk${pathname === l.to ? ' active' : ''}`}>
+              {l.label}
+            </Link>
+          ))}
         </div>
-        <Link to="/contact" className="cta-button">Solicită Demo</Link>
+        <Link to="/contact" className="nav-cta">Solicită Demo</Link>
+        <button className="nav-ham" aria-label="Menu">
+          <span /><span /><span />
+        </button>
       </div>
     </nav>
   )

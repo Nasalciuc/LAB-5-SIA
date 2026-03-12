@@ -1,41 +1,48 @@
 import { Link } from 'react-router-dom'
+import { Hexagon, Linkedin, Facebook, Github, Twitter } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="container">
-        <div className="footer-col logo-col">
-          <Link to="/" className="logo">PEGASUS AI</Link>
-          <p>Automatizare inteligentă pentru afacerea ta, bazată pe cele mai avansate tehnologii AI.</p>
-          <div className="social-links" style={{ marginTop: 20 }}>
-            <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
-            <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
-            <a href="https://github.com" target="_blank" rel="noreferrer" aria-label="GitHub"><i className="fab fa-github"></i></a>
+    <footer className="ft">
+      <div className="ft-grid">
+        <div className="ft-brand">
+          <Link to="/" className="nav-logo" style={{ fontSize: 16 }}>
+            <Hexagon size={20} color="var(--accent)" />
+            <span>PEGASUS AI</span>
+          </Link>
+          <p>Automatizare inteligentă pentru afaceri din Moldova și Europa de Est. Platformă no-code cu agenți AI.</p>
+          <p className="ft-heart">Dezvoltat cu 💙 în Chișinău, Moldova</p>
+        </div>
+        <div>
+          <h4 className="ft-col-t">Navigare</h4>
+          <div className="ft-links">
+            <Link to="/" className="ft-lk">Acasă</Link>
+            <Link to="/about" className="ft-lk">Despre Noi</Link>
+            <Link to="/services" className="ft-lk">Servicii</Link>
+            <Link to="/contact" className="ft-lk">Contact</Link>
           </div>
         </div>
-        <div className="footer-col">
-          <h4>Navigare</h4>
-          <ul>
-            <li><Link to="/">Acasă</Link></li>
-            <li><Link to="/about">Despre Noi</Link></li>
-            <li><Link to="/services">Servicii</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-          </ul>
-        </div>
-        <div className="footer-col">
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:contact@pegasus-ai.md">contact@pegasus-ai.md</a></li>
-            <li><a href="tel:+37369123456">+373 69 123 456</a></li>
-            <li>Str. Studenților 9/8, Chișinău</li>
-            <li>MD-2045, Moldova</li>
-          </ul>
+        <div>
+          <h4 className="ft-col-t">Contact</h4>
+          <div className="ft-links">
+            <a href="mailto:contact@pegasus-ai.md" className="ft-lk">contact@pegasus-ai.md</a>
+            <a href="tel:+37369123456" className="ft-lk">+373 69 123 456</a>
+            <span className="ft-lk">Str. Studenților 9/8</span>
+            <span className="ft-lk">Chișinău, MD-2045</span>
+          </div>
         </div>
       </div>
-      <div className="bottom-bar">
-        <div className="container">
-          <p>&copy; 2026 Pegasus AI Systems. Toate drepturile rezervate.</p>
-          <p className="love-text">Dezvoltat cu 💙 în Chișinău, Moldova</p>
+      <div className="ft-bot">
+        <span className="ft-copy">© 2026 Pegasus AI Systems. Toate drepturile rezervate.</span>
+        <div className="ft-soc">
+          {[
+            { icon: <Linkedin size={16} />, href: '#' },
+            { icon: <Facebook size={16} />, href: '#' },
+            { icon: <Github size={16} />, href: '#' },
+            { icon: <Twitter size={16} />, href: '#' },
+          ].map((s, i) => (
+            <a key={i} href={s.href} className="ft-si" target="_blank" rel="noopener noreferrer">{s.icon}</a>
+          ))}
         </div>
       </div>
     </footer>

@@ -1,154 +1,172 @@
 import { Link } from 'react-router-dom'
+import { ArrowRight, Zap, Puzzle, TrendingUp, Hexagon, LayoutDashboard, Workflow, BarChart3, Settings } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
+
+const features = [
+  { icon: <Zap size={24} />, cls: 'ac', title: 'Automatizare Inteligentă', desc: 'Fluxuri de lucru alimentate de AI care învață și se optimizează continuu pentru afacerea ta.' },
+  { icon: <Puzzle size={24} />, cls: 'tl', title: 'Integrare Simplă', desc: 'Conectează-te cu peste 200+ aplicații și servicii fără configurări complexe sau cod.' },
+  { icon: <TrendingUp size={24} />, cls: 'ac', title: 'Rezultate Măsurabile', desc: 'Dashboard-uri în timp real cu metrici clare pentru a urmări impactul automatizării.' },
+]
+
+const stats = [
+  { value: '40%', label: 'Reducere costuri', color: 'var(--accent)' },
+  { value: '500+', label: 'Fluxuri automatizate', color: 'var(--teal)' },
+  { value: '50+', label: 'Companii partenere', color: 'var(--accent)' },
+  { value: '99.9%', label: 'Uptime garantat', color: 'var(--teal)' },
+]
+
+const testimonials = [
+  { quote: 'Pegasus Flow ne-a redus timpul de procesare a comenzilor cu 60%. Recomandăm!', initials: 'IM', name: 'Ion Moraru', role: 'Director Operațiuni, LogisTech SRL', color: 'var(--accent)' },
+  { quote: 'Sistemul de QA ne-a ajutat să identificăm problemele de training mult mai rapid.', initials: 'AC', name: 'Ana Cebotari', role: 'Manager Call Center, TravelBook MD', color: 'var(--teal)' },
+  { quote: 'Implementarea a durat 3 zile, nu 3 luni cum ne așteptam.', initials: 'SR', name: 'Sergiu Rusu', role: 'CEO, GreenMarket', color: 'var(--accent)' },
+]
+
+const bars = [65, 85, 45, 70, 95, 55, 80, 60, 90, 75]
 
 export default function Home() {
   const ref = useReveal()
-
   return (
-    <section id="home" ref={ref}>
-      {/* Hero */}
-      <div className="hero">
-        <div className="container">
-          <h1>Automatizează-ți Afacerea cu Inteligență Artificială</h1>
-          <p>
-            Pegasus Flow este platforma no-code de automatizare AI care transformă
-            operațiunile SMB-urilor din Moldova și Europa de Est, oferind eficiență,
-            scalabilitate și rezultate măsurabile.
-          </p>
-          <div className="cta-group">
-            <Link to="/services" className="btn btn-primary">Descoperă Pegasus Flow</Link>
-            <Link to="/contact" className="btn btn-secondary">Contactează-ne</Link>
-          </div>
-        </div>
-      </div>
+    <div ref={ref}>
+      {/* HERO */}
+      <section className="bg-b" style={{ paddingBottom: 120 }}>
+        <div className="sec">
+          <div className="hero">
+            <div className="glow glow-a" style={{ top: '20%', left: '50%', transform: 'translateX(-50%)' }} />
+            <div className="glow glow-t" style={{ top: '60%', right: '10%' }} />
 
-      {/* Dashboard Mockup */}
-      <div className="dashboard-mockup">
-        <div className="container">
-          <img
-            src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="Pegasus Flow Dashboard Mockup"
-            loading="lazy"
-          />
-        </div>
-      </div>
+            <div className="badge rv">
+              <span className="badge-dot" />
+              <span>Powered by Pegasus Flow</span>
+            </div>
 
-      {/* Features */}
-      <div className="features-section">
-        <div className="container">
-          <h2>Tot ce ai nevoie pentru automatizare</h2>
-          <div className="features-grid">
-            <div className="feature-card reveal">
-              <i className="fas fa-brain"></i>
-              <h3>Automatizare Inteligentă</h3>
-              <p>
-                Creează fluxuri de lucru inteligente, bazate pe AI, care învață și se
-                adaptează nevoilor afacerii tale, eliminând sarcinile repetitive și
-                maximizând eficiența.
-              </p>
-            </div>
-            <div className="feature-card reveal">
-              <i className="fas fa-plug"></i>
-              <h3>Integrare Simplă</h3>
-              <p>
-                Conectează Pegasus Flow cu peste 200 de aplicații și sisteme pe care le
-                utilizezi deja (CRM, ERP, email, baze de date), fără a scrie o singură
-                linie de cod.
-              </p>
-            </div>
-            <div className="feature-card reveal">
-              <i className="fas fa-chart-line"></i>
-              <h3>Rezultate Măsurabile</h3>
-              <p>
-                Monitorizează performanța automatizărilor în timp real cu tablouri de bord
-                intuitive și rapoarte detaliate, pentru a vedea impactul direct asupra
-                costurilor și productivității.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+            <h1 className="rv rv-d1">Automatizează-ți Afacerea cu Inteligență Artificială</h1>
 
-      {/* Stats */}
-      <div className="stats-section">
-        <div className="container">
-          <div className="stats-grid">
-            <div className="stat-item reveal">
-              <h2>40%</h2>
-              <p>Reducere costuri</p>
-            </div>
-            <div className="stat-item reveal">
-              <h2>500+</h2>
-              <p>Fluxuri automatizate</p>
-            </div>
-            <div className="stat-item reveal">
-              <h2>50+</h2>
-              <p>Companii partenere</p>
-            </div>
-            <div className="stat-item reveal">
-              <h2>99.9%</h2>
-              <p>Uptime garantat</p>
-            </div>
-          </div>
-        </div>
-      </div>
+            <p className="hero-sub rv rv-d2">
+              Pegasus Flow transformă procesele manuale în fluxuri automatizate inteligente. Economisește timp, reduce costurile și accelerează creșterea afacerii tale.
+            </p>
 
-      {/* Testimonials */}
-      <div className="testimonials-section">
-        <div className="container">
-          <h2>Ce spun partenerii noștri</h2>
-          <div className="testimonial-grid">
-            <div className="testimonial-card reveal">
-              <p className="quote">
-                "Pegasus Flow ne-a redus timpul de procesare a comenzilor cu 60%.
-                Recomandăm!"
-              </p>
-              <div className="author">
-                <img src="https://i.pravatar.cc/150?img=68" alt="Ion Moraru" />
-                <div className="author-info">
-                  <strong>Ion Moraru</strong>
-                  <span>Director Operațiuni, LogisTech SRL</span>
+            <div className="hero-cta rv rv-d3">
+              <Link to="/services" className="btn-p">Descoperă Pegasus Flow <ArrowRight size={18} /></Link>
+              <Link to="/contact" className="btn-o">Contactează-ne</Link>
+            </div>
+
+            {/* Dashboard Mockup */}
+            <div className="mock-wrap rv rv-d4">
+              <div className="mock">
+                <div className="mock-side">
+                  <div className="mock-logo"><Hexagon size={18} color="var(--accent)" /> Pegasus Flow</div>
+                  {[
+                    { icon: <LayoutDashboard size={15} />, label: 'Dashboard', active: true },
+                    { icon: <Workflow size={15} />, label: 'Automatizări' },
+                    { icon: <BarChart3 size={15} />, label: 'Rapoarte' },
+                    { icon: <Settings size={15} />, label: 'Setări' },
+                  ].map((n) => (
+                    <div key={n.label} className={`mock-ni${n.active ? ' act' : ''}`}>{n.icon} {n.label}</div>
+                  ))}
                 </div>
-              </div>
-            </div>
-            <div className="testimonial-card reveal">
-              <p className="quote">
-                "Sistemul de QA ne-a ajutat să identificăm problemele de training mult mai
-                rapid."
-              </p>
-              <div className="author">
-                <img src="https://i.pravatar.cc/150?img=53" alt="Ana Cebotari" />
-                <div className="author-info">
-                  <strong>Ana Cebotari</strong>
-                  <span>Manager Call Center, TravelBook MD</span>
-                </div>
-              </div>
-            </div>
-            <div className="testimonial-card reveal">
-              <p className="quote">
-                "Implementarea a durat 3 zile, nu 3 luni cum ne așteptam."
-              </p>
-              <div className="author">
-                <img src="https://i.pravatar.cc/150?img=34" alt="Sergiu Rusu" />
-                <div className="author-info">
-                  <strong>Sergiu Rusu</strong>
-                  <span>CEO, GreenMarket</span>
+                <div className="mock-main">
+                  <div className="mock-stats">
+                    {[
+                      { label: 'Fluxuri Active', value: '248', change: '+12.5%' },
+                      { label: 'Timp Economisit', value: '1,240h', change: '+8.3%' },
+                      { label: 'Costuri Reduse', value: '€34.2K', change: '+40.1%' },
+                    ].map((s) => (
+                      <div key={s.label} className="mock-st">
+                        <div className="mock-st-l">{s.label}</div>
+                        <div className="mock-st-v">{s.value}</div>
+                        <div className="mock-st-c">{s.change}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mock-chart">
+                    <div className="mock-chart-t">Performanță Automatizări</div>
+                    <div className="mock-bars">
+                      {bars.map((h, i) => (
+                        <div key={i} className={`mock-bar ${i % 3 === 0 ? 'tl' : 'ind'}`} style={{ height: `${h}%` }} />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* Final CTA */}
-      <div className="final-cta-section">
-        <div className="container">
-          <div className="final-cta-box reveal">
+      {/* FEATURES */}
+      <section className="bg-b" style={{ padding: '100px 0' }}>
+        <div className="sec">
+          <div className="s-head">
+            <span className="badge-lbl rv">Funcționalități</span>
+            <h2 className="rv rv-d1">Tot ce ai nevoie pentru automatizare</h2>
+          </div>
+          <div className="g3">
+            {features.map((f, i) => (
+              <div key={f.title} className={`card rv rv-d${i + 1}`}>
+                <div className={`card-icon ${f.cls}`}>{f.icon}</div>
+                <h3>{f.title}</h3>
+                <p>{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section className="bg-c" style={{ padding: '100px 0' }}>
+        <div className="sec">
+          <div className="s-head">
+            <h2 className="rv">Rezultate care vorbesc de la sine</h2>
+          </div>
+          <div className="g4">
+            {stats.map((s, i) => (
+              <div key={s.label} className={`rv rv-d${i + 1}`} style={{ background: 'var(--bg)', borderRadius: 12, padding: '32px 24px', textAlign: 'center' }}>
+                <div className="stat-n" style={{ color: s.color }}>{s.value}</div>
+                <div className="stat-l">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="bg-b" style={{ padding: '100px 0' }}>
+        <div className="sec">
+          <div className="s-head">
+            <span className="badge-lbl rv">Testimoniale</span>
+            <h2 className="rv rv-d1">Ce spun partenerii noștri</h2>
+          </div>
+          <div className="g3">
+            {testimonials.map((t, i) => (
+              <div key={t.name} className={`card rv rv-d${i + 1}`}>
+                <div className="t-qm" style={{ color: t.color }}>❝</div>
+                <p className="t-txt">{t.quote}</p>
+                <div className="t-auth">
+                  <div className="t-av" style={{ background: t.color }}>{t.initials}</div>
+                  <div>
+                    <div className="t-name">{t.name}</div>
+                    <div className="t-role">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-b" style={{ padding: '60px 0 100px' }}>
+        <div className="sec">
+          <div className="cta-g rv">
             <h2>Gata să-ți transformi afacerea?</h2>
-            <Link to="/contact" className="btn">Începe Gratuit &rarr;</Link>
+            <p>Alătură-te celor peste 50 de companii din Moldova care au ales automatizarea inteligentă cu Pegasus Flow.</p>
+            <div className="hero-cta">
+              <Link to="/services" className="btn-w">Începe Gratuit <ArrowRight size={18} color="var(--accent)" /></Link>
+              <Link to="/contact" className="btn-o">Programează un Demo</Link>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   )
 }
