@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Hexagon } from 'lucide-react'
 
@@ -10,8 +11,16 @@ const links = [
 
 export default function Navbar() {
   const { pathname } = useLocation()
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 50)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <nav className="nav">
+    <nav className={`nav${scrolled ? ' nav-scrolled' : ''}`}>
       <div className="nav-in">
         <Link to="/" className="nav-logo">
           <Hexagon size={22} />

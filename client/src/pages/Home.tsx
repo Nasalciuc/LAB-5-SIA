@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Zap, Puzzle, TrendingUp, Hexagon, LayoutDashboard, Workflow, BarChart3, Settings } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
@@ -11,18 +11,43 @@ const features = [
 
 const stats = [
   { value: '40%', label: 'Reducere costuri', color: 'var(--accent)' },
-  { value: '500+', label: 'Fluxuri automatizate', color: 'var(--teal)' },
+  { value: '500+', label: 'Fluxuri automatizate', color: 'var(--accent)' },
   { value: '50+', label: 'Companii partenere', color: 'var(--accent)' },
-  { value: '99.9%', label: 'Uptime garantat', color: 'var(--teal)' },
+  { value: '99.9%', label: 'Uptime garantat', color: 'var(--accent)' },
 ]
 
 const testimonials = [
   { quote: 'Pegasus Flow ne-a redus timpul de procesare a comenzilor cu 60%. Recomandăm!', photo: 'https://i.pravatar.cc/150?img=68', name: 'Ion Moraru', role: 'Director Operațiuni, LogisTech SRL', color: 'var(--accent)' },
-  { quote: 'Sistemul de QA ne-a ajutat să identificăm problemele de training mult mai rapid.', photo: 'https://i.pravatar.cc/150?img=47', name: 'Ana Cebotari', role: 'Manager Call Center, TravelBook MD', color: 'var(--teal)' },
+  { quote: 'Sistemul de QA ne-a ajutat să identificăm problemele de training mult mai rapid.', photo: 'https://i.pravatar.cc/150?img=47', name: 'Ana Cebotari', role: 'Manager Call Center, TravelBook MD', color: 'var(--accent)' },
   { quote: 'Implementarea a durat 3 zile, nu 3 luni cum ne așteptam.', photo: 'https://i.pravatar.cc/150?img=12', name: 'Sergiu Rusu', role: 'CEO, GreenMarket', color: 'var(--accent)' },
 ]
 
 const bars = [65, 85, 45, 70, 95, 55, 80, 60, 90, 75]
+
+function Counter({ target, suffix = '' }: { target: number; suffix: string }) {
+  const [count, setCount] = useState(0)
+  const ref = useRef<HTMLDivElement>(null)
+  const started = useRef(false)
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !started.current) {
+        started.current = true
+        let current = 0
+        const step = Math.max(target / 50, 0.5)
+        const timer = setInterval(() => {
+          current += step
+          if (current >= target) { setCount(target); clearInterval(timer) }
+          else setCount(Math.floor(current))
+        }, 25)
+      }
+    }, { threshold: 0.5 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [target])
+  return <span ref={ref}>{count}{suffix}</span>
+}
 
 export default function Home() {
   const ref = useReveal()
@@ -33,9 +58,6 @@ export default function Home() {
       <section className="bg-b" style={{ paddingBottom: 120 }}>
         <div className="sec">
           <div className="hero">
-            <div className="glow glow-a" style={{ top: '20%', left: '50%', transform: 'translateX(-50%)' }} />
-            <div className="glow glow-t" style={{ top: '60%', right: '10%' }} />
-
             <div className="badge rv">
               <span className="badge-dot" />
               <span>Powered by Pegasus Flow</span>
@@ -99,6 +121,22 @@ export default function Home() {
         </div>
       </section>
 
+      {/* TRUST STRIP */}
+      <section className="bg-b" style={{ padding: '20px 0 0' }}>
+        <div className="sec">
+          <div className="trust-strip rv">
+            <span>Ales de echipe din</span>
+            <strong style={{ color: 'var(--text-2)' }}>LogisTech SRL</strong>
+            <span>·</span>
+            <strong style={{ color: 'var(--text-2)' }}>TravelBook MD</strong>
+            <span>·</span>
+            <strong style={{ color: 'var(--text-2)' }}>GreenMarket</strong>
+            <span>·</span>
+            <span>și alte 50+ companii</span>
+          </div>
+        </div>
+      </section>
+
       {/* FEATURES */}
       <section className="bg-b" style={{ padding: '100px 0' }}>
         <div className="sec">
@@ -127,7 +165,12 @@ export default function Home() {
           <div className="g4">
             {stats.map((s, i) => (
               <div key={s.label} className={`rv rv-d${i + 1}`} style={{ background: 'var(--bg)', borderRadius: 12, padding: '32px 24px', textAlign: 'center' }}>
-                <div className="stat-n" style={{ color: s.color, fontSize: i === 0 ? 80 : undefined }}>{s.value}</div>
+                <div className="stat-n" style={{ color: s.color }}>
+                  {s.value === '40%' ? <Counter target={40} suffix="%" /> :
+                   s.value === '500+' ? <Counter target={500} suffix="+" /> :
+                   s.value === '50+' ? <Counter target={50} suffix="+" /> :
+                   s.value === '99.9%' ? <Counter target={99.9} suffix="%" /> : s.value}
+                </div>
                 <div className="stat-l">{s.label}</div>
               </div>
             ))}

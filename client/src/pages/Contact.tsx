@@ -127,7 +127,7 @@ export default function Contact() {
         <div className="sec">
           <div className="rv" style={{ borderRadius: 16, overflow: 'hidden', border: '1px solid var(--border)' }}>
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2720!2d28.8095!3d47.0285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDAxJzI4LjIiTiAyOMKwNTAnMjIuOSJF!5e0!3m2!1sen!2s"
+              src="https://www.google.com/maps?q=Strada+Studentilor+9,+Chisinau,+Moldova&z=16&output=embed"
               width="100%" height="350" style={{ border: 0, display: 'block', filter: 'brightness(0.8) contrast(1.1)' }}
               allowFullScreen loading="lazy" title="Pegasus AI Systems — Chișinău"
             />
