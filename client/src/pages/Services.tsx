@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Check } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
@@ -61,6 +62,7 @@ function ServiceVisual({ service }: { service: typeof services[0] }) {
 
 export default function Services() {
   const ref = useReveal()
+  useEffect(() => { document.title = 'Servicii AI — Pegasus Flow, QA, Marketing' }, [])
   return (
     <div ref={ref}>
       {/* HERO */}

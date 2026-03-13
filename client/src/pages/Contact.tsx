@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Send, Mail, Phone, MapPin, Clock } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
 
@@ -11,6 +11,7 @@ const info = [
 
 export default function Contact() {
   const ref = useReveal()
+  useEffect(() => { document.title = 'Contact — Pegasus AI Systems Chișinău' }, [])
   const [form, setForm] = useState({ name: '', email: '', company: '', phone: '', service: '', message: '' })
   const [sent, setSent] = useState(false)
 

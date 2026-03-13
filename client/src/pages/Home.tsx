@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Zap, Puzzle, TrendingUp, Hexagon, LayoutDashboard, Workflow, BarChart3, Settings } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
@@ -25,6 +26,7 @@ const bars = [65, 85, 45, 70, 95, 55, 80, 60, 90, 75]
 
 export default function Home() {
   const ref = useReveal()
+  useEffect(() => { document.title = 'Pegasus AI Systems — Automatizare AI pentru Afaceri' }, [])
   return (
     <div ref={ref}>
       {/* HERO */}

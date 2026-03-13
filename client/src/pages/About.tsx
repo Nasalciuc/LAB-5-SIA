@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, Lightbulb, Eye, Target, Handshake } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
@@ -11,6 +12,7 @@ const values = [
 
 export default function About() {
   const ref = useReveal()
+  useEffect(() => { document.title = 'Despre Noi — Pegasus AI Systems' }, [])
   return (
     <div ref={ref}>
       {/* HERO */}
