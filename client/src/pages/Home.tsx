@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Zap, Puzzle, TrendingUp, Hexagon, LayoutDashboard, Workflow, BarChart3, Settings } from 'lucide-react'
+import { ArrowRight, Zap, Puzzle, TrendingUp, LayoutDashboard, Workflow, BarChart3, Settings } from 'lucide-react'
 import { useReveal } from '../hooks/useReveal'
 
 const features = [
@@ -82,7 +82,7 @@ export default function Home() {
             <div className="mock-wrap rv rv-d4">
               <div className="mock">
                 <div className="mock-side">
-                  <div className="mock-logo"><Hexagon size={18} color="var(--accent)" /> Pegasus Flow</div>
+                  <div className="mock-logo"><img src="/logo.png" alt="Pegasus" /> Pegasus Flow</div>
                   {[
                     { icon: <LayoutDashboard size={15} />, label: 'Dashboard', active: true },
                     { icon: <Workflow size={15} />, label: 'Automatizări' },

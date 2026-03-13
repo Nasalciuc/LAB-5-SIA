@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Hexagon } from 'lucide-react'
 
 const links = [
   { to: '/', label: 'Acasă' },
@@ -23,7 +22,7 @@ export default function Navbar() {
     <nav className={`nav${scrolled ? ' nav-scrolled' : ''}`}>
       <div className="nav-in">
         <Link to="/" className="nav-logo">
-          <Hexagon size={22} />
+          <img src="/logo.png" alt="Pegasus AI" />
           <span>PEGASUS AI</span>
         </Link>
         <div className="nav-links">

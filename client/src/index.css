@@ -469,3 +469,8 @@ body::before{content:'';position:fixed;inset:0;background:url("data:image/svg+xm
   .svc-title{font-size:28px}
 }
 @media(max-width:480px){.hero h1{font-size:30px}.s-head h2{font-size:26px}.stat-n{font-size:40px}.pr-price{font-size:28px}.svc-title{font-size:24px}}
+
+/* LOGO */
+.nav-logo img{height:44px;mix-blend-mode:lighten;margin:-10px 0}
+.ft-brand .nav-logo img{height:36px;mix-blend-mode:lighten;margin:-6px 0}
+.mock-logo img{height:28px;mix-blend-mode:lighten;margin:-4px 0}

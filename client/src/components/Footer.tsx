@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Hexagon, Linkedin, Facebook, Github, Twitter } from 'lucide-react'
+import { Linkedin, Facebook, Github, Twitter } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="ft-grid">
         <div className="ft-brand">
           <Link to="/" className="nav-logo" style={{ fontSize: 16 }}>
-            <Hexagon size={20} color="var(--accent)" />
+            <img src="/logo.png" alt="Pegasus AI" />
             <span>PEGASUS AI</span>
           </Link>
           <p>Automatizare inteligentă pentru afaceri din Moldova și Europa de Est. Platformă no-code cu agenți AI.</p>
